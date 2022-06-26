@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-//Possibly add refresh feature and/or custom location
+//Possibly add refresh feature and/or custom location bar
 
 export const fetchWeather = createAsyncThunk(
     'weather/getWeather',

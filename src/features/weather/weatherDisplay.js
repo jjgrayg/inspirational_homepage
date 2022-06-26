@@ -41,8 +41,8 @@ export const WeatherDisplay = () => {
         navigator.geolocation.getCurrentPosition(
             function(position) {
                 setLocation({
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
+                    lat: position.coords.latitude.toFixed(3),
+                    lng: position.coords.longitude.toFixed(3)
                 });
             },
             function(error) {
@@ -61,7 +61,7 @@ export const WeatherDisplay = () => {
             <div className='weather-main'>
                 <img src={iconUrl} />
                 <div className='weather-main-info'>
-                    <h3>{weather.main || '???'}</h3>
+                    <h3>{weather.name}: {weather.main || '???'}</h3>
                     <p>Temp: {weather.temp || '???'}°F</p>
                 </div>
             </div>

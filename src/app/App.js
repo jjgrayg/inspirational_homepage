@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     if (background === '')
       dispatch(fetchBackground());
-  })
+  }, [])
 
   return (
     <div className='App' style={backgroundStyle}>

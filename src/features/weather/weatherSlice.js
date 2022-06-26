@@ -54,7 +54,8 @@ export const selectWeatherConditions = state => {
             feelsLike: state.weather.weather.main.feels_like,
             wind: state.weather.weather.wind,
             sunrise: state.weather.weather.sys.sunrise,
-            sunset: state.weather.weather.sys.sunset
+            sunset: state.weather.weather.sys.sunset,
+            name: state.weather.weather.name
         };
     }
     return {};

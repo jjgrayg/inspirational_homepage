@@ -63,6 +63,10 @@ export const WeatherDisplay = () => {
                 <div className='weather-main-info'>
                     <h3>{weather.name}: {weather.main || '???'}</h3>
                     <p>Temp: {weather.temp || '???'}°F</p>
+                    <div className='weather-high-low'>
+                        <p>High: {weather.high || '???'}°F</p>
+                        <p>Low: {weather.low || '???'}°F</p>
+                    </div>
                 </div>
             </div>
             <hr/>

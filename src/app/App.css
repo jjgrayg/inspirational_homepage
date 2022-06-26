@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-attachment: fixed;
 }
 
 .App-header {
@@ -132,6 +133,7 @@ svg#Capa_1 {
 main {
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 .weather-disp {
@@ -213,4 +215,30 @@ main {
   border-radius: 25px;
   margin: 15px;
   font-size: 1rem;
+}
+
+.weather-high-low {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.weather-high-low p {
+  font-size: .8rem;
+}
+
+@media (max-width: 767px) {
+  main {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .vertical-cont {
+    width: 95%;
+  }
+
+  .todos {
+    width: 90%;
+    margin: 0;
+  }
 }

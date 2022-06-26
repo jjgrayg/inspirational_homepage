@@ -5,7 +5,6 @@ export const fetchQuote = createAsyncThunk(
     async () => {
         const response = await fetch('https://quotes.rest/qod');
         const json = await response.json();
-        console.log(json);
         return {
             quote: json.contents.quotes[0].quote,
             author: json.contents.quotes[0].author

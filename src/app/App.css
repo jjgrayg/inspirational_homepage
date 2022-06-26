@@ -1,0 +1,216 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background-color: rgba(31,31,31,0.7);
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  background: rgb(52, 52, 52);
+  border-radius: 25px;
+  align-items: center;
+  height: 50px;
+  color: white;
+  width: 75vw;
+  margin-bottom: 15px;
+}
+
+.search {
+  margin-top: 35px;
+}
+
+.todo-form {
+  margin-left: 45px;
+}
+
+.submit-button {
+  display: flex;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: ease-in-out 0.2s;
+  margin-right: 10px;
+}
+
+.submit-button:hover {
+  background-color: rgb(35, 35, 35);
+  transition: ease-in-out 0.2s;
+}
+
+input[type="text"] {
+  height: 75%;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  width: -webkit-fill-available;
+  font-size: 1rem;
+}
+
+svg#Capa_1 {
+  margin: 0 5px;
+}
+
+.todo {
+  border-radius: 15px;
+  width: 45%;
+  height: 150px;
+  position: relative;
+  cursor: pointer;
+}
+
+.todos {
+  width: 45%;
+  background-color: rgba(45,45,45,0.5);
+  border: 3px rgb(45,45,45) solid;
+  border-radius: 25px;
+  margin: 15px;
+}
+
+.todos .form {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.todos-cont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 70vh;
+  align-content: flex-start;
+  justify-content: space-around;
+  gap: 10px;
+  padding-left: 12px;
+}
+
+.todo p {
+  font-size: 17px;
+  margin: 5px;
+  margin-top: 13px;
+}
+
+.todo button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  color: white;
+}
+
+.todos-cont::-webkit-scrollbar {
+  width: 12px;
+  background: transparent;
+}
+
+.todos-cont::-webkit-scrollbar-track {
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px; 
+}
+
+.todos-cont::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 35px rgb(52, 52, 52);
+  box-shadow: inset 0 0 35px rgb(52, 52, 52);
+}
+
+main {
+  width: 100%;
+  display: flex;
+}
+
+.weather-disp {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(45,45,45,0.5);
+  border: 3px rgb(45,45,45) solid;
+  border-radius: 25px;
+  margin: 15px;
+}
+
+.weather-disp hr {
+  width: 90%;
+  margin: 4px auto;
+  border: 1px rgb(52, 52, 52) solid;
+  border-radius: 35px;
+  background: rgb(52, 52, 52);
+}
+
+.vertical-cont {
+  width: 45%;
+}
+
+.weather-main {
+  display: flex;
+  width: 100%;
+}
+
+.weather-main img {
+  width: 25%;
+  margin-left: 10px;
+}
+
+.weather-main-info {
+  width: -webkit-fill-available;
+  font-size: 1.3rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.weather-main-info p {
+  margin: 0;
+}
+
+.weather-main-info h3 {
+  margin: 0;
+}
+
+.weather-secondary-info p {
+  font-size: 12px;
+}
+
+.weather-infoblock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-infoblock p {
+  margin: 5px;
+}
+
+.weather {
+  margin: 10px;
+  margin-bottom: 10px;
+  margin-top: 3px;
+}
+
+.weather-secondary-info {
+  display: flex;
+}
+
+.quote-display {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(45,45,45,0.5);
+  border: 3px rgb(45,45,45) solid;
+  border-radius: 25px;
+  margin: 15px;
+  font-size: 1rem;
+}

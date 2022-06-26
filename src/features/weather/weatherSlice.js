@@ -9,7 +9,6 @@ export const fetchWeather = createAsyncThunk(
         const response = await fetch(url);
         const json = await response.json();
         json.cod === '400' ? json.valid = false : json.valid = true;
-        console.log(json);
         return json;
     }
 );
@@ -55,7 +54,9 @@ export const selectWeatherConditions = state => {
             wind: state.weather.weather.wind,
             sunrise: state.weather.weather.sys.sunrise,
             sunset: state.weather.weather.sys.sunset,
-            name: state.weather.weather.name
+            name: state.weather.weather.name,
+            low: state.weather.weather.main.temp_min,
+            high: state.weather.weather.main.temp_max
         };
     }
     return {};

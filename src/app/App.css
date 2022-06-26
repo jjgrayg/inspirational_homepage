@@ -241,4 +241,16 @@ main {
     width: 90%;
     margin: 0;
   }
+
+  .form {
+    width: 90vw;
+  }
+
+  .todo-form {
+    margin-left: 10px;
+  }
+
+  input[type="text"] {
+    font-size: small;
+  }
 }

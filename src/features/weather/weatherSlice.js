@@ -9,7 +9,7 @@ export const fetchWeather = createAsyncThunk(
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${encodeURI(location.lat)}&lon=${encodeURI(location.lng)}&units=imperial&appid=${apiKey}`;
         const response = await fetch(url);
         const json = await response.json();
-        const geoUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${encodeURI(location.lat)}&lon=${encodeURI(location.lng)}&appid=${apiKey}`; //&limit={limit}
+        const geoUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${encodeURI(location.lat)}&lon=${encodeURI(location.lng)}&appid=${apiKey}`; //&limit={limit}
         const geoResponse = await fetch(geoUrl);
         const geoJson = await geoResponse.json();
         json.state = geoJson[0].state;

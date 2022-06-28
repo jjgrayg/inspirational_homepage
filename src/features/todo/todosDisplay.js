@@ -33,7 +33,7 @@ export const TodosDisplay = () => {
                             opacity: (todo.finished ? 0.5 : 1)
                         }}
                     >
-                        <p>{todo.text}</p>
+                        <p onClick={handleClick} >{todo.text}</p>
                         <button value={todo.id} onClick={handleDelete}>X</button>
                     </div>
                 )

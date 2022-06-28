@@ -27,7 +27,8 @@ export const todosSlice = createSlice({
             state.numTodos++;
         },
         setTodo: (state, action) => {
-            state.todos.find(todo => todo.id === action.payload).finished = !state.todos.find(todo => todo.id === action.payload).finished;
+            if(state.todos.find(todo => todo.id === action.payload))
+                state.todos.find(todo => todo.id === action.payload).finished = !state.todos.find(todo => todo.id === action.payload).finished;
         },
         deleteTodo: (state, action) => {
             state.todos = state.todos.filter(todo => action.payload !== todo.id);

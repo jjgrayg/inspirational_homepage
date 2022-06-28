@@ -27,13 +27,13 @@ export const WeatherDisplay = () => {
             hours = hours > 12 ? hours - 12 : hours;
             suffix = ' PM';
         }
-        const minutes = "0" + date.getMinutes();
+        const minutes = '0' + date.getMinutes();
         return hours + ':' + minutes.substr(-2) + suffix;
     }
 
     const convertToTextDirection = windDegree => {
         var val = Math.floor((windDegree / 22.5) + 0.5);
-        var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+        var arr = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
         return arr[(val % 16)];
     }
 
@@ -41,15 +41,15 @@ export const WeatherDisplay = () => {
         navigator.geolocation.getCurrentPosition(
             function(position) {
                 setLocation({
-                    lat: position.coords.latitude.toFixed(3),
-                    lng: position.coords.longitude.toFixed(3)
+                    lat: position.coords.latitude.toFixed(10),
+                    lng: position.coords.longitude.toFixed(10)
                 });
             },
             function(error) {
-              console.error("Error Code = " + error.code + " - " + error.message);
+              console.error('Error Code = ' + error.code + ' - ' + error.message);
             }
           );
-    }, [loading, failed]);
+    }, []);
 
     useEffect(() => {
         if (location.lat && location.lng)   
@@ -58,14 +58,20 @@ export const WeatherDisplay = () => {
 
     return (
         <div className='weather-disp'>
+            <div className='city-name'>
+                <h4>
+                    {!(loading || failed) ? (weather.name + ', ' + weather.state) : '???'}
+                </h4>
+            </div>
+            <hr />
             <div className='weather-main'>
                 <img src={iconUrl} />
                 <div className='weather-main-info'>
-                    <h3>{weather.name}: {weather.main || '???'}</h3>
-                    <p>Temp: {weather.temp || '???'}°F</p>
+                    <h3>{!(loading || failed) ? weather.main : '???'}</h3>
+                    <p>{!(loading || failed) ? weather.temp : '???'}°F</p>
                     <div className='weather-high-low'>
-                        <p>High: {weather.high || '???'}°F</p>
-                        <p>Low: {weather.low || '???'}°F</p>
+                        <p>High: {!(loading || failed) ? weather.high : '???'}°F</p>
+                        <p>Low: {!(loading || failed) ? weather.low : '???'}°F</p>
                     </div>
                 </div>
             </div>
@@ -73,21 +79,21 @@ export const WeatherDisplay = () => {
             <div className='weather-secondary-info'>
                 <div className='vertical-cont weather'>
                     <div className='weather-infoblock'>
-                        <p>Feels like:</p><p>{weather.feelsLike || '???'}°F</p>
+                        <p className='left-align'>Feels like:</p><p className='right-align'>{!(loading || failed) ? weather.feelsLike : '???'}°F</p>
                     </div>
                     <div className='weather-infoblock'>
-                        <p>Sunrise:</p><p>{convertToTime(weather.sunrise) || '???'}</p>
+                        <p className='left-align'>Sunrise:</p><p className='right-align'>{!(loading || failed) ? convertToTime(weather.sunrise) : '???'}</p>
                     </div>
                     <div className='weather-infoblock'>
-                        <p>Sunset:</p><p>{convertToTime(weather.sunset) || '???'}</p>
+                        <p className='left-align'>Sunset:</p><p className='right-align'>{!(loading || failed) ? convertToTime(weather.sunset) : '???'}</p>
                     </div>
                 </div>
                 <div className='vertical-cont weather'>
                     <div className='weather-infoblock'>
-                        <p>Wind speed:</p><p>{weather.wind ? weather.wind.speed : '???'} MPH</p>
+                        <p className='left-align'>Wind speed:</p><p className='right-align'>{!(loading || failed) && weather.wind ? weather.wind.speed : '???'} MPH</p>
                     </div>
                     <div className='weather-infoblock'>
-                        <p>Wind direction:</p><p>{weather.wind ? convertToTextDirection(weather.wind.deg) : '???'}</p>
+                        <p className='left-align'>Wind direction:</p><p className='right-align'>{!(loading || failed) && weather.wind ? convertToTextDirection(weather.wind.deg) : '???'}</p>
                     </div>
                 </div>
             </div>

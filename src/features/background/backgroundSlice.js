@@ -4,10 +4,9 @@ import { isMobile } from 'react-device-detect';
 export const fetchBackground = createAsyncThunk(
     'background/fetchBackground', 
     async () => {
-        console.log('Mobile?', isMobile)
-        const response = await fetch('https://api.unsplash.com/photos/random?client_id=o1LfTxdtsC8FuvcjR8dZNaSeEK4zOPDyKmyFUT6Bq4Q' + (isMobile ? '&orientation=landscape' : '')); //
+        const response = await fetch('https://api.unsplash.com/photos/random?client_id=o1LfTxdtsC8FuvcjR8dZNaSeEK4zOPDyKmyFUT6Bq4Q&orientation=' + (isMobile ? 'portrait' : 'landscape')); //
         const json = await response.json();
-        return json.urls.full;
+        return json.urls.regular;
 });
 
 export const backgroundSlice = createSlice({

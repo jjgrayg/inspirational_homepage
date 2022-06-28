@@ -6,7 +6,7 @@ import todosReducer from '../features/todo/todosSlice';
 import weatherReducer from '../features/weather/weatherSlice';
 import quotesReducer from '../features/quote/quoteSlice';
 
-export default configureStore({
+const store = configureStore({
     reducer: {
         background: backgroundReducer,
         todos: todosReducer,
@@ -14,3 +14,16 @@ export default configureStore({
         quote: quotesReducer
     }
 });
+
+const saveTodosLocally = state => {
+    try {
+        const serialisedState = JSON.stringify(state.todos);
+        localStorage.setItem('persistantState', serialisedState);
+    } catch (e) {
+        console.warn(e);
+    }
+}
+
+store.subscribe(() => saveTodosLocally(store.getState()));
+
+export default store;

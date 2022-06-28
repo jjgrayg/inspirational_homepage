@@ -1,11 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const loadFromLocal = () => {
+    try {
+        const serialisedState = localStorage.getItem('persistantState');
+        if (serialisedState === null) return {
+            todos: [],
+            numTodos: 0
+        };
+        return JSON.parse(serialisedState);
+    } catch (e) {
+        console.warn(e);
+        return {
+            todos: [],
+            numTodos: 0
+        };
+    }
+}
+
+
 export const todosSlice = createSlice({
     name: 'todos',
-    initialState: {
-        todos: [],
-        numTodos: 0
-    },
+    initialState: loadFromLocal(),
     reducers: {
         addTodo: (state, action) => {
             state.todos.push(action.payload);
@@ -17,11 +32,14 @@ export const todosSlice = createSlice({
         deleteTodo: (state, action) => {
             state.todos = state.todos.filter(todo => action.payload !== todo.id);
             state.numTodos--;
+        },
+        loadTodosFromState: (state, action) => {
+            state = action.payload;
         }
     }
 });
 
 export default todosSlice.reducer;
-export const { addTodo, setTodo, deleteTodo } = todosSlice.actions;
+export const { addTodo, setTodo, deleteTodo, loadTodosFromState } = todosSlice.actions;
 export const selectTodos = state => state.todos.todos;
 export const selectNumTodos = state => state.todos.numTodos;

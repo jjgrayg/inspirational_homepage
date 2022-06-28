@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './Fonts.css';
 import './App.css';
 import './GoogleLogo.css'
 
@@ -26,7 +27,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (background === '')
+    if (background === '' && !loadingOrFailed)
       dispatch(fetchBackground());
   }, [])
 

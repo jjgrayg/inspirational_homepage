@@ -5,9 +5,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchWeather = createAsyncThunk(
     'weather/getWeather',
     async (location) => {
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${encodeURI(location.lat)}&lon=${encodeURI(location.lng)}&units=imperial&appid=d1ce5ed553569567376b3bc0c7544a62`;
+        const apiKey = 'd1ce5ed553569567376b3bc0c7544a62';
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${encodeURI(location.lat)}&lon=${encodeURI(location.lng)}&units=imperial&appid=${apiKey}`;
         const response = await fetch(url);
         const json = await response.json();
+        const geoUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${encodeURI(location.lat)}&lon=${encodeURI(location.lng)}&appid=${apiKey}`; //&limit={limit}
+        const geoResponse = await fetch(geoUrl);
+        const geoJson = await geoResponse.json();
+        json.state = geoJson[0].state;
         json.cod === '400' ? json.valid = false : json.valid = true;
         return json;
     }
@@ -55,6 +60,7 @@ export const selectWeatherConditions = state => {
             sunrise: state.weather.weather.sys.sunrise,
             sunset: state.weather.weather.sys.sunset,
             name: state.weather.weather.name,
+            state: state.weather.weather.state,
             low: state.weather.weather.main.temp_min,
             high: state.weather.weather.main.temp_max
         };

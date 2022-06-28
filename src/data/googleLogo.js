@@ -5,7 +5,7 @@ export const GoogleLogo = () => {
     return (
         <svg 
             id='Capa_1' 
-            style={{enableBackground:'new 0 0 150 150;'}} 
+            style={{enableBackground:'new 0 0 150 150'}} 
             version='1.1' 
             viewBox='0 0 150 150' 
             height={squareDims} 

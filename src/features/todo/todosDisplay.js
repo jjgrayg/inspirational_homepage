@@ -14,8 +14,9 @@ export const TodosDisplay = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
+        console.log(e.target);
         const id = e.target.id;
-        dispatch(setTodo(id));
+        console.log(dispatch(setTodo(id)));
     }
 
     return (
@@ -24,7 +25,7 @@ export const TodosDisplay = () => {
                 return (
                     <div 
                         onClick={handleClick} 
-                        id={todo.id} 
+                        id={todo.id}
                         key={index} 
                         className='todo' 
                         style={{
@@ -33,7 +34,7 @@ export const TodosDisplay = () => {
                             opacity: (todo.finished ? 0.5 : 1)
                         }}
                     >
-                        <p onClick={handleClick} >{todo.text}</p>
+                        <p id={todo.id} >{todo.text}</p>
                         <button value={todo.id} onClick={handleDelete}>X</button>
                     </div>
                 )

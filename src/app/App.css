@@ -71,6 +71,7 @@ svg#Capa_1 {
   height: 150px;
   position: relative;
   cursor: pointer;
+  overflow-y: auto;
 }
 
 .todos {

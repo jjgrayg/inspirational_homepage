@@ -62,7 +62,8 @@ export const selectWeatherConditions = state => {
             name: state.weather.weather.name,
             state: state.weather.weather.state,
             low: state.weather.weather.main.temp_min,
-            high: state.weather.weather.main.temp_max
+            high: state.weather.weather.main.temp_max,
+            humidity: state.weather.weather.main.humidity
         };
     }
     return {};

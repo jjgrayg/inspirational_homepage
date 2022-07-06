@@ -14,9 +14,8 @@ export const TodosDisplay = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        console.log(e.target);
         const id = e.target.id;
-        console.log(dispatch(setTodo(id)));
+        dispatch(setTodo(id));
     }
 
     return (
@@ -27,12 +26,13 @@ export const TodosDisplay = () => {
                         onClick={handleClick} 
                         id={todo.id}
                         key={index} 
-                        className='todo' 
+                        className={'todo todo-' + todo.backgroundName} 
                         style={{
                             backgroundColor: todo.backgroundColor, 
                             border: `3px ${todo.backgroundColor} solid`,
                             opacity: (todo.finished ? 0.5 : 1)
                         }}
+                        
                     >
                         <p id={todo.id} >{todo.text}</p>
                         <button value={todo.id} onClick={handleDelete}>X</button>

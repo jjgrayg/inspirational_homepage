@@ -95,6 +95,9 @@ export const WeatherDisplay = () => {
                     <div className='weather-infoblock'>
                         <p className='left-align'>Wind direction:</p><p className='right-align'>{!(loading || failed) && weather.wind ? convertToTextDirection(weather.wind.deg) : '???'}</p>
                     </div>
+                    <div className='weather-infoblock'>
+                        <p className='left-align'>Humidity:</p><p className='right-align'>{!(loading || failed) && weather.humidity ? weather.humidity : '???'}%</p>
+                    </div>
                 </div>
             </div>
         </div>

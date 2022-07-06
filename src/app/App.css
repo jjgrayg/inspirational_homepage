@@ -104,13 +104,14 @@ svg#Capa_1 {
 .todo p {
   font-size: 17px;
   margin: 5px;
-  margin-top: 13px;
+  margin-top: 18px;
+  overflow-wrap: break-word;
 }
 
 .todo button {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -131,8 +132,43 @@ svg#Capa_1 {
 
 .todos-cont::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 35px rgb(52, 52, 52);
-  box-shadow: inset 0 0 35px rgb(52, 52, 52);
+  -webkit-box-shadow: inset 0 0 35px rgb(37, 37, 37);
+  box-shadow: inset 0 0 35px rgb(37, 37, 37);
+}
+
+.todo::-webkit-scrollbar {
+  width: 12px;
+  background: transparent;
+}
+
+.todo::-webkit-scrollbar-track {
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px; 
+}
+
+.todo-red::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 35px rgb(255, 0, 0);
+  box-shadow: inset 0 0 35px rgb(255, 0, 0);
+}
+
+.todo-green::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 35px rgb(0, 128, 0);
+  box-shadow: inset 0 0 35px rgb(0, 128, 0);
+}
+
+.todo-blue::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 35px rgb(0, 0, 255);
+  box-shadow: inset 0 0 35px rgb(0, 0, 255);
+}
+
+.todo-yellow::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 35px rgb(255, 255, 0);
+  box-shadow: inset 0 0 35px rgb(255, 255, 0);
 }
 
 main {

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { addTodo, selectNumTodos } from '../features/todo/todosSlice'
 
-const backgroundColors = ['rgba(255, 0, 0, 0.5)', 'rgba(0, 128, 0, 0.5)', 'rgba(0, 0, 255, 0.5)', 'rgba(255, 255, 0, 0.5)'];
+const backgroundColors = [{name: 'red', color: 'rgba(255, 0, 0, 0.5)'}, {name: 'green', color: 'rgba(0, 128, 0, 0.5)'}, {name: 'blue', color: 'rgba(0, 0, 255, 0.5)'}, {name: 'yellow', color: 'rgba(255, 255, 0, 0.5)'}];
 
 export const NewTodoForm = () => {
     const squareDims = 35;
@@ -16,10 +16,13 @@ export const NewTodoForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const backgroundColor = backgroundColors[(numTodos + 1) % 4];
+        const backgroundObj = backgroundColors[(numTodos + 1) % 4];
+        const backgroundColor = backgroundObj.color;
+        const backgroundName = backgroundObj.name;
         dispatch(addTodo({
             id: uuidv4(),
             backgroundColor: backgroundColor,
+            backgroundName: backgroundName,
             text: todo,
             finished: false
         }));
@@ -35,6 +38,9 @@ export const NewTodoForm = () => {
                     placeholder='Add todo...'
                     value={todo}
                     onChange={(e) => setTodo(e.target.value)}
+                    onInvalid={e => e.target.setCustomValidity('You must type something!')}
+                    onInput={e => e.target.setCustomValidity('')}
+                    required
                 />
                 <div onClick={handleSubmit} className='submit-button'>
                     <svg xmlns='http://www.w3.org/2000/svg' width={squareDims} height={squareDims} fill='currentColor' className='bi bi-arrow-right-short' viewBox='0 0 16 16'>

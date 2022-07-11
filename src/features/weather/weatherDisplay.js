@@ -17,6 +17,8 @@ export const WeatherDisplay = () => {
     const weather = useSelector(selectWeatherConditions);
     const iconUrl = useSelector(selectWeatherIconUrl);
 
+	const [numLocationRefreshes, setNumLocationRefreshes] = useState(0);
+
     const dispatch = useDispatch();
 
     const convertToTime = time => {
@@ -38,18 +40,22 @@ export const WeatherDisplay = () => {
     }
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
-            function(position) {
-                setLocation({
-                    lat: position.coords.latitude.toFixed(10),
-                    lng: position.coords.longitude.toFixed(10)
-                });
-            },
-            function(error) {
-              console.error('Error Code = ' + error.code + ' - ' + error.message);
-            },
-            {enableHighAccuracy: true} 
-          );
+		if (numLocationRefreshes < 50 && (location.accuracy > 250 || !location.accuracy)) {
+			setNumLocationRefreshes(numLocationRefreshes + 1);
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    setLocation({
+                        lat: position.coords.latitude.toFixed(10),
+                        lng: position.coords.longitude.toFixed(10),
+                        accuracy: position.coords.accuracy
+                    });
+                },
+                function(error) {
+                console.error('Error Code = ' + error.code + ' - ' + error.message);
+                },
+                {enableHighAccuracy: true} 
+            );
+		}
     }, []);
 
     useEffect(() => {
